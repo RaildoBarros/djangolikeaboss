@@ -1,0 +1,9 @@
+<h1>Person detail</h1>
+
+{{ object.first_name}} <br>
+{{ object.last_name }}
+
+<p>Date: {{ now|date}}</p>
+
+<a href="{% url 'person_update' object.pk %}">Update</a>
+<a href="{% url 'person_delete' object.pk %}">Delete</a>
