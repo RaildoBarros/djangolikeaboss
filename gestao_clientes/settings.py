@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['djangolikeaboss.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['djangolikeaboss.herokuapp.com', 'localhost', '127.0.0.1']
 
 INTERNAL_IPS = ['127.0.0.1']
 
@@ -89,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
+WSGI_APPLICATION = 'djangolikeaboss.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
