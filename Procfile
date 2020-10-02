@@ -1,1 +1,1 @@
-web: gunicorn djangolikeaboss.wsgi --log-file -
+web: gunicorn gestao_clientes.wsgi --log-file -
