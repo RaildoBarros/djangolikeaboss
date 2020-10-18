@@ -34,6 +34,10 @@ class Venda(models.Model):
             ('permissao3', 'Permissão 3'),
         )
 
+    def get_raw_vendas(self):
+        vendas = Venda.objects.raw('select * from vendas_venda')
+        return vendas
+
     def __str__(self):
         return self.numero
 
@@ -42,6 +46,12 @@ class ItemDoPedido(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.FloatField()
     desconto = models.DecimalField(max_digits=5, decimal_places=2)
+
+    class Meta:
+        verbose_name_plural = "Itens do Pedido"
+        unique_together = (
+            ("venda", "produto"),
+        )
 
     def __str__(self):
         return self.venda.numero + ' - ' + self.produto.descricao

@@ -1,0 +1,6 @@
+<h2>Tem certeza que deseja deletar o pedido: {{ venda }}?</h2>
+
+<form action="{% url 'deletepedido' venda.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+</form>

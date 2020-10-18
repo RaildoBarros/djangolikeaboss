@@ -34,6 +34,9 @@ INTERNAL_IPS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # 'grappelli',
+    # 'suit',
+    # 'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -89,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangolikeaboss.wsgi.application'
+WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`

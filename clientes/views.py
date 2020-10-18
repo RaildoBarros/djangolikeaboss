@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.forms import model_to_dict
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Person
@@ -128,3 +130,30 @@ class ProdutoBulk(View):
             p = Produto(descricao=produto, preco=10)
             list_produtos.append(p)
         Produto.objects.bulk_create(list_produtos)
+
+def api(request):
+    a = {'nome': 'Raildo', 'idade': 29, 'salario': 20000}
+    produto = Produto.objects.last()
+    b = model_to_dict(produto)
+
+    l = []
+    produtos = Produto.objects.all()
+    for produto in produtos:
+        l.append(model_to_dict(produto))
+
+    return JsonResponse(l, status=200, safe=False)
+
+class APICBV(View):
+    def get(self, request):
+        data = {'nome': 'Raildo'}
+
+        produto = Produto.objects.last()
+        b = model_to_dict(produto)
+
+        l = []
+        produtos = Produto.objects.all()
+        for produto in produtos:
+            l.append(model_to_dict(produto))
+
+        return JsonResponse(l, status=200, safe=False)
+

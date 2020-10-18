@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import persons_list
+from .views import persons_list, api, APICBV
 from .views import persons_new
 from .views import persons_update
 from .views import persons_delete
@@ -8,6 +8,9 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
+    path('api/', api, name="api"),
+    path('apicbv/', APICBV.as_view(), name="apicbv"),
+
     path('list/', persons_list, name="person_list"),
     path('new/', persons_new, name="person_new"),
     path('update/<int:id>/', persons_update, name="persons_update"),
