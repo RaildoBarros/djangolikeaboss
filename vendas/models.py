@@ -9,6 +9,7 @@ from .managers import VendaManager
 
 
 class Venda(models.Model):
+    # Todo: Implementar status
     numero = models.CharField(max_length=7)
     valor = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     desconto = models.DecimalField(max_digits=5, decimal_places=2, default=0)

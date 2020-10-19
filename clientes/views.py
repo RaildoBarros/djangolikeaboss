@@ -20,7 +20,19 @@ from django.urls import reverse_lazy
 
 @login_required
 def persons_list(request):
-    persons = Person.objects.all()
+    nome = request.GET.get('nome', None)
+    sobrenome = request.GET.get('sobrenome', None)
+    checkbox = request.GET.get('checkbox', None)
+    radio = request.GET.get('radio', None)
+    select = request.GET.get('select', None)
+
+    # if checkbox == 'on':
+    #     persons = Person.objects.filter()
+
+    if nome or sobrenome:
+        persons = Person.objects.filter(first_name=nome) | Person.objects.filter(last_name=sobrenome)
+    else:
+        persons = Person.objects.all()
 
     return render(request, 'person.html', {'persons': persons})
 

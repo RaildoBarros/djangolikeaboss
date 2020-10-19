@@ -4,6 +4,9 @@ from django.views import View
 
 from .forms import ItemPedidoForm, ItemDoPedidoModelForm
 from .models import Venda, ItemDoPedido
+import logging
+
+logger = logging.getLogger('django')
 
 
 class DashboardView(View):
@@ -75,6 +78,7 @@ class NovoItemPedido(View):
 
 class ListaVendas(View):
     def get(self, request):
+        logger.debug('Acessaram a listagem de vendas')
         vendas = Venda.objects.all()
         count_vendas = vendas.count()
         return render(request, 'vendas/listavendas.html', {'vendas': vendas, 'count_vendas': count_vendas})
